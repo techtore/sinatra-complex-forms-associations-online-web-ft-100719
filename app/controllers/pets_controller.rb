@@ -34,12 +34,11 @@ class PetsController < ApplicationController
 
   post '/pets/:id' do 
  
-
     if !params[:owner][:name].empty?
       owner = Owner.create(name: params[:owner][:name])
       @pet.owner = owner
-    end
-    
+      
+   else
     @pet = Pet.find(params[:id])
     @pet.update(name: params[:pet][:name])
     
